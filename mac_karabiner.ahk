@@ -63,6 +63,25 @@ RAlt:: {
 }
 
 *Space::Send("{Ctrl Down}{Space}{Ctrl Up}") ; for raycast
+
+; Passthrough for other common keys - sends them with RAlt as modifier
+*Enter::Send("{RAlt Down}{Enter}{RAlt Up}")
+*Tab::Send("{RAlt Down}{Tab}{RAlt Up}")
+*Escape::Send("{RAlt Down}{Escape}{RAlt Up}")
+*Backspace::Send("{RAlt Down}{Backspace}{RAlt Up}")
+*Delete::Send("{RAlt Down}{Delete}{RAlt Up}")
+*F1::Send("{RAlt Down}{F1}{RAlt Up}")
+*F2::Send("{RAlt Down}{F2}{RAlt Up}")
+*F3::Send("{RAlt Down}{F3}{RAlt Up}")
+*F4::Send("{RAlt Down}{F4}{RAlt Up}")
+*F5::Send("{RAlt Down}{F5}{RAlt Up}")
+*F6::Send("{RAlt Down}{F6}{RAlt Up}")
+*F7::Send("{RAlt Down}{F7}{RAlt Up}")
+*F8::Send("{RAlt Down}{F8}{RAlt Up}")
+*F9::Send("{RAlt Down}{F9}{RAlt Up}")
+*F10::Send("{RAlt Down}{F10}{RAlt Up}")
+*F11::Send("{RAlt Down}{F11}{RAlt Up}")
+*F12::Send("{RAlt Down}{F12}{RAlt Up}")
 #HotIf
 
 ;; same as above, but let's you use RAlt as a modifier for other combos
