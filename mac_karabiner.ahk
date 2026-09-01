@@ -11,7 +11,7 @@
 ; ---
 ; Karabiner Rule: "Change shift + backspace to delete"
 ; ---
-+Backspace::Delete
+; +Backspace::Delete ; don't want anymore as it's mostly useful on keyboards without a delete key
 
 ; ---
 ; Karabiner Rule: "Change right_command+ijkl; to arrow keys"
