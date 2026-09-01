@@ -21,10 +21,24 @@ RAlt:: {
 }
 
 #HotIf GetKeyState("RAlt", "P")
-*i::Up
-*k::Down
-*j::Left
-*l::Right
+
+SendArrow(key) {
+    mods := ""
+    if GetKeyState("LWin", "P") || GetKeyState("RWin", "P")
+        mods .= "#"
+    if GetKeyState("Ctrl", "P")
+        mods .= "^"
+    if GetKeyState("Shift", "P")
+        mods .= "+"
+    if GetKeyState("LAlt", "P")
+        mods .= "!"
+    Send(mods "{" key "}")
+}
+
+*i:: SendArrow("Up")
+*k:: SendArrow("Down")
+*j:: SendArrow("Left")
+*l:: SendArrow("Right")
 *u:: {
     if GetKeyState("Shift", "P")
         Send("{Ctrl Down}{Shift Down}{Left}{Shift Up}{Ctrl Up}")
@@ -62,26 +76,26 @@ RAlt:: {
         Send("{Ctrl Down}{End}{Ctrl Up}")
 }
 
-*Space::Send("{Ctrl Down}{Space}{Ctrl Up}") ; for raycast
+*Space:: Send("{Ctrl Down}{Space}{Ctrl Up}") ; for raycast
 
 ; Passthrough for other common keys - sends them with RAlt as modifier
-*Enter::Send("{RAlt Down}{Enter}{RAlt Up}")
-*Tab::Send("{RAlt Down}{Tab}{RAlt Up}")
-*Escape::Send("{RAlt Down}{Escape}{RAlt Up}")
-*Backspace::Send("{RAlt Down}{Backspace}{RAlt Up}")
-*Delete::Send("{RAlt Down}{Delete}{RAlt Up}")
-*F1::Send("{RAlt Down}{F1}{RAlt Up}")
-*F2::Send("{RAlt Down}{F2}{RAlt Up}")
-*F3::Send("{RAlt Down}{F3}{RAlt Up}")
-*F4::Send("{RAlt Down}{F4}{RAlt Up}")
-*F5::Send("{RAlt Down}{F5}{RAlt Up}")
-*F6::Send("{RAlt Down}{F6}{RAlt Up}")
-*F7::Send("{RAlt Down}{F7}{RAlt Up}")
-*F8::Send("{RAlt Down}{F8}{RAlt Up}")
-*F9::Send("{RAlt Down}{F9}{RAlt Up}")
-*F10::Send("{RAlt Down}{F10}{RAlt Up}")
-*F11::Send("{RAlt Down}{F11}{RAlt Up}")
-*F12::Send("{RAlt Down}{F12}{RAlt Up}")
+*Enter:: Send("{RAlt Down}{Enter}{RAlt Up}")
+*Tab:: Send("{RAlt Down}{Tab}{RAlt Up}")
+*Escape:: Send("{RAlt Down}{Escape}{RAlt Up}")
+*Backspace:: Send("{RAlt Down}{Backspace}{RAlt Up}")
+*Delete:: Send("{RAlt Down}{Delete}{RAlt Up}")
+*F1:: Send("{RAlt Down}{F1}{RAlt Up}")
+*F2:: Send("{RAlt Down}{F2}{RAlt Up}")
+*F3:: Send("{RAlt Down}{F3}{RAlt Up}")
+*F4:: Send("{RAlt Down}{F4}{RAlt Up}")
+*F5:: Send("{RAlt Down}{F5}{RAlt Up}")
+*F6:: Send("{RAlt Down}{F6}{RAlt Up}")
+*F7:: Send("{RAlt Down}{F7}{RAlt Up}")
+*F8:: Send("{RAlt Down}{F8}{RAlt Up}")
+*F9:: Send("{RAlt Down}{F9}{RAlt Up}")
+*F10:: Send("{RAlt Down}{F10}{RAlt Up}")
+*F11:: Send("{RAlt Down}{F11}{RAlt Up}")
+*F12:: Send("{RAlt Down}{F12}{RAlt Up}")
 #HotIf
 
 ;; same as above, but let's you use RAlt as a modifier for other combos
@@ -93,8 +107,6 @@ RAlt:: {
 ; *j::Send("{Blind}{RAlt Up}{Left}")
 ; *l::Send("{Blind}{RAlt Up}{Right}")
 ; #HotIf
-
-
 
 
 ; ---
@@ -113,23 +125,21 @@ CapsLock Up:: {
 }
 
 ; Capslock + J or L to Back/Forward mouse button
-^!+j::Click("X1")
-^!+l::Click("X2")
+^!+j:: Click("X1")
+^!+l:: Click("X2")
 
 
-; alt and ctrl combinations, left alt and ctrl already swapped via sharpkeys 
+; alt and ctrl combinations, left alt and ctrl already swapped via sharpkeys
 ; switching via ahk would cause conflicts
-LCtrl & Tab::AltTab 
-LAlt & Tab::Send("{LCtrl Down}{Tab}{LCtrl Up}")
+LCtrl & Tab::AltTab
+LAlt & Tab:: Send("{LCtrl Down}{Tab}{LCtrl Up}")
 
 ; Swap Alt+F4 and Ctrl+F4
-LAlt & F4::Send("{LCtrl Down}{F4}{LCtrl Up}")
-LCtrl & F4::Send("{LAlt Down}{F4}{LAlt Up}")
+LAlt & F4:: Send("{LCtrl Down}{F4}{LCtrl Up}")
+LCtrl & F4:: Send("{LAlt Down}{F4}{LAlt Up}")
 
 
-
-
-; copilot key rebind 
+; copilot key rebind
 ; partially doesn't work, if you hold down key for long enough it triggers win shift
 *<+<#f23:: {
     Send("{Blind}{LShift Up}{LWin Up}{RControl Down}")
